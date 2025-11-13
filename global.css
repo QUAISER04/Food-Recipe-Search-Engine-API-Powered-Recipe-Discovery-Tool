@@ -1,0 +1,18 @@
+.font-inter,
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: #fb923c;
+    border-radius: 20px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background-color: #fed7aa;
+}
+
