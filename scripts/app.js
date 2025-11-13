@@ -161,14 +161,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showLoading(isLoading) {
-        loader.classList.toggle('hidden', !isLoading);
-        recipeGrid.classList.toggle('hidden', isLoading);
-        errorMessage.classList.toggle('hidden', true);
+        if (isLoading) {
+            loader.classList.remove('hidden');
+            recipeGrid.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+        } else {
+            loader.classList.add('hidden');
+            recipeGrid.classList.remove('hidden');
+        }
     }
 
     function showError(isError) {
-        errorMessage.classList.toggle('hidden', !isError);
-        recipeGrid.classList.toggle('hidden', isError);
+        if (isError) {
+            errorMessage.classList.remove('hidden');
+            recipeGrid.classList.add('hidden');
+            loader.classList.add('hidden');
+        } else {
+            errorMessage.classList.add('hidden');
+            recipeGrid.classList.remove('hidden');
+        }
     }
 
     searchButton.addEventListener('click', searchRecipes);
@@ -190,6 +201,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function init() {
+        console.log('🍳 Initializing Recipe App...');
+        console.log('Elements loaded:', {
+            searchInput: !!searchInput,
+            searchButton: !!searchButton,
+            categoryFilter: !!categoryFilter,
+            recipeGrid: !!recipeGrid,
+            modal: !!modal
+        });
         populateCategories();
         searchRecipes();
     }
